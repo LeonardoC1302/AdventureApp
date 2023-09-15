@@ -1,0 +1,21 @@
+{
+    "name": "leona/app-adventure",
+    "description": "Project with PHP 8, MVC, SQL, SASS, GULP and more",
+    "type": "project",
+    "autoload" : {
+        "psr-4" : {
+            "MVC\\" : "./",
+            "Controllers\\" : "./controllers",
+            "Model\\" : "./models"
+        }
+    },
+    "authors": [
+        {
+            "name": "LeonardoC1302",
+            "email": "lecespedes@estudiantec.cr"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
