@@ -17,10 +17,11 @@ class ActiveRecord {
 
     public function save(){
         if(!is_null($this->id)){
-            $this->update();
+            $result = $this->update();
         } else {
-            $this->create();
+            $result = $this->create();
         }
+        return $result;
     }
 
     public function create() {
@@ -109,8 +110,8 @@ class ActiveRecord {
         return $result;
     }
 
-    public static function find($id){
-        $query = "SELECT * FROM " . static::$table . " WHERE id = $id";
+    public static function where($column, $value){
+        $query = "SELECT * FROM " . static::$table . " WHERE $column = '$value'";
         $result = self::querySQL($query);
         return array_shift($result); // Get the first element of the array
     }

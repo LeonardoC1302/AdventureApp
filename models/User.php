@@ -4,7 +4,7 @@ namespace Model;
 
 class User extends ActiveRecord {
     protected static $table = 'users';
-    protected static $columnsDB = ['id', 'name', 'lastName', 'email', 'password', 'phone', 'admin', 'verified', 'token'];
+    protected static $columns_db = ['id', 'name', 'lastName', 'email', 'password', 'phone', 'admin', 'verified', 'token'];
 
     public $id;
     public $name;
@@ -26,6 +26,60 @@ class User extends ActiveRecord {
         $this->admin = $args['admin'] ?? 0;
         $this->verified = $args['verified'] ?? 0;
         $this->token = $args['token'] ?? '';
+    }
+
+    public function validateRegister() {
+        if(!$this->name) {
+            self::$alerts['error'][] = 'The name is mandatory';
+        }
+        if(!$this->lastName) {
+            self::$alerts['error'][] = 'The last name is mandatory';
+        }
+        if(!$this->email) {
+            self::$alerts['error'][] = 'The email is mandatory';
+        }
+        if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            self::$alerts['error'][] = 'The email is not valid';
+        }
+        if(!$this->password) {
+            self::$alerts['error'][] = 'The password is mandatory';
+        }
+        if($this->password && strlen($this->password) < 6) {
+            self::$alerts['error'][] = 'The password must be at least 6 characters';
+        }
+        if(!$this->phone) {
+            self::$alerts['error'][] = 'The phone is mandatory';
+        }
+        return self::$alerts;
+    }
+
+    public function validateLogin(){
+        if(!$this->email) {
+            self::$alerts['error'][] = 'The email is mandatory';
+        }
+        if(!$this->password) {
+            self::$alerts['error'][] = 'The password is mandatory';
+        }
+        return self::$alerts;
+    }
+
+    public function exists(){
+        $query = "SELECT * FROM " . self::$table . " WHERE email = '" . $this->email . "' LIMIT 1";
+        $result = self::$db->query($query);
+
+        if($result->num_rows) {
+            self::$alerts['error'][] = 'The email is already registered';
+        }
+
+        return $result;
+    }
+
+    public function hashPassword() {
+        $this->password = password_hash($this->password, PASSWORD_BCRYPT);
+    }
+    
+    public function generateToken() {
+        $this->token = uniqid();
     }
     
 }

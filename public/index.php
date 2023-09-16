@@ -24,6 +24,9 @@ $router->post('/recover', [LoginController::class, 'recover']);
 $router->get('/register', [LoginController::class, 'register']);
 $router->post('/register', [LoginController::class, 'register']);
 
+// Verify Account
+$router->get('/verify', [LoginController::class, 'verify']);
+$router->get('/message', [LoginController::class, 'message']);
 
 
 
