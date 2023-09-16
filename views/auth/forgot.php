@@ -1,6 +1,10 @@
 <h1 class='page-name'>Password Reset</h1>
 <p class="page-description"> Enter your email address below, and we will send you a link to reset your password</p>
 
+<?php 
+    include_once __DIR__ . "/../templates/alerts.php";
+?>
+
 <form action="/forgot" class="form" method='POST'>
 
     <div class="field">

@@ -37,8 +37,7 @@ class User extends ActiveRecord {
         }
         if(!$this->email) {
             self::$alerts['error'][] = 'The email is mandatory';
-        }
-        if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+        }else if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             self::$alerts['error'][] = 'The email is not valid';
         }
         if(!$this->password) {
@@ -56,6 +55,8 @@ class User extends ActiveRecord {
     public function validateLogin(){
         if(!$this->email) {
             self::$alerts['error'][] = 'The email is mandatory';
+        }else if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            self::$alerts['error'][] = 'The email is not valid';
         }
         if(!$this->password) {
             self::$alerts['error'][] = 'The password is mandatory';
@@ -72,6 +73,24 @@ class User extends ActiveRecord {
         }
 
         return $result;
+    }
+
+    public function validateEmail(){
+        if(!$this->email) {
+            self::$alerts['error'][] = 'The email is mandatory';
+        }else if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            self::$alerts['error'][] = 'The email is not valid';
+        }
+        return self::$alerts;
+    }
+
+    public function validatePassword(){
+        if(!$this->password) {
+            self::$alerts['error'][] = 'The password is mandatory';
+        }else if(strlen($this->password) < 6) {
+            self::$alerts['error'][] = 'The password must be at least 6 characters';
+        }
+        return self::$alerts;
     }
 
     public function hashPassword() {
