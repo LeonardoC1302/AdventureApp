@@ -8,7 +8,7 @@
 <form action="/" class="form" method='POST'>
     <div class="field">
         <label for="email">Email</label>
-        <input type="email" id='email' placeholder="Your Email" name='email' value="<?php echo s($auth->email) ?>">
+        <input type="email" id='email' placeholder="Your Email" name='email'>
     </div>
 
     <div class="field">

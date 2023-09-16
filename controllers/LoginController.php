@@ -9,15 +9,40 @@ class LoginController{
     public static function login(Router $router){
         $alerts = [];
 
-        $auth = new User();
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $auth = new User($_POST);
             $auth->sync($_POST);
             $alerts = $auth->validateLogin();
+
+            if(empty($alerts['error'])){
+                // check if user exists
+                $user = User::where('email', $auth->email);
+                if($user){
+                    // check if password is correct
+                    if($user->verifyPasswordVerified($auth->password)){
+                        session_start();
+                        $_SESSION['id'] = $user->id;
+                        $_SESSION['name'] = $user->name . " " . $user->lastName;
+                        $_SESSION['email'] = $user->email;
+                        $_SESSION['login'] = true;
+                        // Redirect 
+                        if($user->admin == 1){
+                            $_SESSION['admin'] = $user->admin;
+                            header('Location: /admin');
+                        } else{
+                            header('Location: /reservations');
+                        }
+                    }
+                } else{
+                    User::setAlerts('error', 'The user does not exist');
+                }
+            }
+
         }
 
+        $alerts = User::getAlerts();
         $router->render('auth/login', [
-            'alerts' => $alerts,
-            'auth' => $auth
+            'alerts' => $alerts
         ]);
     }
 
@@ -41,7 +66,7 @@ class LoginController{
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $user->sync($_POST);
-            $alerts = $user->validateRegister();}
+            $alerts = $user->validateRegister();
 
             if(empty($alerts['error'])){
                 $result = $user->exists();
@@ -61,6 +86,7 @@ class LoginController{
                         header('Location: /message');
                     }
                 }
+            }
         }
 
         $router->render('auth/register', [
@@ -93,5 +119,16 @@ class LoginController{
         $router->render('auth/message', [
             
         ]);
+    }
+
+
+    // Reservations
+    public static function reservations(Router $router){
+        echo "Reservations";
+    }
+
+    // Admin
+    public static function admin(Router $router){
+        echo "Admin";
     }
 }

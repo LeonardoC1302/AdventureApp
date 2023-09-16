@@ -29,6 +29,13 @@ $router->get('/verify', [LoginController::class, 'verify']);
 $router->get('/message', [LoginController::class, 'message']);
 
 
+// Reservations
+$router->get('/reservations', [LoginController::class, 'reservations']);
+
+// Admin
+$router->get('/admin', [LoginController::class, 'admin']);
+
+
 
 // Checks and validates the routes, ensuring they exist and assigns them to the Controller functions
 $router->checkRoutes();

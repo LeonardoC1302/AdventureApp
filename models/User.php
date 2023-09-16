@@ -81,5 +81,15 @@ class User extends ActiveRecord {
     public function generateToken() {
         $this->token = uniqid();
     }
+
+    public function verifyPasswordVerified($password){
+        $result = password_verify($password, $this->password);
+        
+        if(!$result || !$this->verified){
+            self::$alerts['error'][] = 'The password is incorrect or the account is not verified';
+        } else {
+            return true;
+        }
+    }
     
 }
