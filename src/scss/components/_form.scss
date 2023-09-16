@@ -2,6 +2,7 @@
 @use 'base/mixins' as m;
 
 .form {
+    margin-top: v.$gap;
     width: 100%;
 }
 

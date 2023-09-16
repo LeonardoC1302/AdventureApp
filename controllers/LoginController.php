@@ -15,7 +15,9 @@ class LoginController{
     }
 
     public static function forgot(Router $router){
-        echo "Forgot Password";
+        $router->render('auth/forgot', [
+            
+        ]);
     }
 
     public static function recover(Router $router){
@@ -23,6 +25,8 @@ class LoginController{
     }
 
     public static function register(Router $router){
-        echo "Register";
+        $router->render('auth/register', [
+            
+        ]);
     }
 }
