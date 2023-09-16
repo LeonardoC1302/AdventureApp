@@ -22,3 +22,13 @@ p {
     color: v.$white;
     font-size: 2rem;
 }
+
+.page-name {
+    text-align: center;
+    margin: 5rem 0;
+    font-weight: v.$bold;
+}
+
+.page-description {
+    text-align: center;
+}
