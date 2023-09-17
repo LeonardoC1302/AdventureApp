@@ -4,6 +4,7 @@ require_once __DIR__ . '/../includes/app.php';
 
 use MVC\Router;
 use Controllers\LoginController;
+use Controllers\ReservationController;
 
 $router = new Router();
 
@@ -30,7 +31,7 @@ $router->get('/message', [LoginController::class, 'message']);
 
 
 // Reservations
-$router->get('/reservations', [LoginController::class, 'reservations']);
+$router->get('/reservations', [ReservationController::class, 'index']);
 
 // Admin
 $router->get('/admin', [LoginController::class, 'admin']);

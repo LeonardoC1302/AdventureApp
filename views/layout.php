@@ -16,6 +16,10 @@
             <?php echo $content; ?>
         </div>
     </div>
+
+    <?php 
+        echo $script ?? '';
+    ?>
             
 </body>
 </html>
