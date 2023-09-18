@@ -1,0 +1,60 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.activities-list {
+    display: grid;
+    gap: 2rem;
+    
+    @include m.tablet{
+        @include m.grid(2, 2rem);
+    }
+    
+    .activity {
+        align-items: center;
+        background-color: v.$light;
+        padding: 2rem;
+        border-radius: 1rem;
+        transition: transform 300ms;
+        text-align: center;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+        p {
+            margin: 0 0 calc(v.$gap/4) 0;
+            color: v.$dark;
+        }
+
+        .activity-price {
+            color: v.$secondary;
+            font-weight: v.$bold;
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        .activity-name {
+            color: v.$dark;
+            font-weight: v.$bold;
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .activity-description {
+            color: v.$dark;
+            font-weight: v.$regular;
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        &.selected {
+            background-color: v.$secondary;
+            p {
+                color: v.$white;
+            }
+            .activity-price {
+                color: v.$light;
+            }
+        }
+    }
+}
