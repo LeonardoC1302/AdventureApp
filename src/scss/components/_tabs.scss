@@ -7,7 +7,7 @@
     }
 
     button {
-        background-color: v.$blue;
+        background-color: v.$secondary;
         border: none;
         color: v.$white;
         padding: 1rem;
@@ -20,12 +20,12 @@
 
         &:hover {
             cursor: pointer;
-            background-color: darken(v.$blue, 10%);
+            background-color: darken(v.$secondary, 10%);
         }
 
         &.active {
             background-color: v.$white;
-            color: v.$blue;
+            color: v.$secondary;
         }
     }
 }

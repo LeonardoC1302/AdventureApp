@@ -2,5 +2,5 @@
 @use 'base/mixins' as m;
 
 .button {
-    @include m.button(v.$blue, v.$white);
+    @include m.button(v.$secondary, v.$white);
 }
