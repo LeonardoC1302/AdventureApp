@@ -106,7 +106,7 @@ function prev(){
 
 async function checkAPI(){
     try {
-        const url = 'http://localhost:3000/api/reservations';
+        const url = 'http://localhost:3000/api/activities';
         // Await stops the execution of the code until the promise is resolved
         const response = await fetch(url);
         const result = await response.json();
@@ -299,6 +299,21 @@ function showSummary(){
     }
 }
 
-function makeReservation(){
-    console.log('Making reservation...');
+async function makeReservation(){
+    const {name, date, time, activities} = reservation;
+    const idActivities = activities.map(activity => activity.id);
+
+    const data = new FormData();
+    data.append('name', name);
+    data.append('date', date);
+    data.append('time', time);
+    data.append('activities', idActivities);
+
+    const url = 'http://localhost:3000/api/reservations';
+    const answer = await fetch(url, {
+        'method': 'POST',
+        'body': data
+    });
+
+    const result = await answer.json(); 
 }

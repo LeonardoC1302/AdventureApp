@@ -38,7 +38,9 @@ $router->get('/reservations', [ReservationController::class, 'index']);
 $router->get('/admin', [LoginController::class, 'admin']);
 
 // API
-$router->get('/api/reservations', [APIController::class, 'index']);
+$router->get('/api/activities', [APIController::class, 'index']);
+$router->post('/api/reservations', [APIController::class, 'save']);
+
 
 
 

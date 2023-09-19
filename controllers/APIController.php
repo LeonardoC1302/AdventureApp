@@ -8,4 +8,12 @@ class APIController{
         $activities = Activity::all();
         echo json_encode($activities);
     }
+
+    public static function save(){
+        $answer = [
+            'data' => $_POST
+        ];
+
+        echo json_encode($answer);
+    }
 }
