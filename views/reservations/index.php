@@ -46,7 +46,7 @@
 
 
     <!-- Summary -->
-    <div id="step3" class="section">
+    <div id="step3" class="section summary-content">
         <h2>Reservation Summary</h2>
         <p class="text-center">Check your reservation details</p>
     </div>

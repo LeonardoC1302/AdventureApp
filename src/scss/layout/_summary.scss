@@ -1,0 +1,27 @@
+@use 'base/variables' as v;
+
+.summary-content{
+    p{
+        margin-bottom: 1rem;
+    }
+
+    span{
+        color: v.$light;
+        font-weight: v.$bold;
+        font-size: 2.4rem;
+    }
+
+    .total {
+        text-align: right;
+        margin-bottom: v.$gap;
+    }
+}
+
+.activity-container{
+    padding: 3rem 0;
+    border-bottom: 1px solid darken(v.$light, 10%);
+
+    &:last-of-type{
+        margin-bottom: v.$gap;
+    }
+}

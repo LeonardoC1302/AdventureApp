@@ -26,6 +26,8 @@ function startApp() {
     clientName();
     addDate();
     addTime();
+
+    showSummary();
 }
 
 function showSection(){
@@ -73,6 +75,7 @@ function pagination(){
     } else if(step === 3){
         prevButton.classList.remove('hide');
         nextButton.classList.add('hide');
+        showSummary();
     } else {
         prevButton.classList.remove('hide');
         nextButton.classList.remove('hide');
@@ -158,7 +161,7 @@ function selectActivity(activity){
         reservation.activities = [...activities, activity];
         activityDiv.classList.add('selected');
     }
-    console.log(reservation);
+    // console.log(reservation);
 }
 
 function clientName(){
@@ -172,7 +175,7 @@ function addDate(){
 
         if([0].includes(day)){
             inputDate.value = '';
-            showAlert('We are not open on Sundays', 'error');
+            showAlert('We are not open on Sundays', 'error', '.form');
         } else{
             reservation.date = e.target.value;
         }
@@ -186,26 +189,116 @@ function addTime(){
         const hour = time.split(':')[0];
         if(hour < 8 || hour > 18){
             inputTime.value = '';
-            showAlert('We are not open at this time', 'error');
+            showAlert('We are not open at this time', 'error', '.form');
         } else{
             reservation.time = time;
         }
     });
 }
 
-function showAlert(message, type){
+function showAlert(message, type, element, disappear = true){
     const prevAlert = document.querySelector('.alert');
-    if(prevAlert) return;
+    if(prevAlert) {
+        prevAlert.remove();
+    };
 
     const alert = document.createElement('DIV');
     alert.textContent = message;
     alert.classList.add('alert');
     alert.classList.add(type);
 
-    const form = document.querySelector('.form');
-    form.appendChild(alert);
+    const reference = document.querySelector(element);
+    reference.appendChild(alert);
 
-    setTimeout(() => {
-        alert.remove();
-    }, 3000);
+    if(disappear){
+        setTimeout(() => {
+            alert.remove();
+        }, 3000);
+    }
+}
+
+function showSummary(){
+    const summary = document.querySelector('.summary-content');
+
+    while(summary.firstChild){
+        summary.removeChild(summary.firstChild);
+    }
+
+
+    if(Object.values(reservation).includes('')){
+        showAlert('You must fill all the fields', 'error', '.summary-content', false);
+    }else if(reservation.activities.length === 0){
+        showAlert('You must select at least one activity', 'error', '.summary-content', false);
+    } else{
+        const {name, date, time, activities} = reservation;
+
+        const clientName = document.createElement('P');
+        clientName.innerHTML = `<span>Name: </span>${name}`;
+
+        //Formatting the date
+        const dateObj = new Date(date);
+        const month = dateObj.getMonth();
+        const day = dateObj.getDate() + 2;
+        const year = dateObj.getFullYear();
+
+        const dateUTC = new Date(Date.UTC(year, month, day));
+
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const formattedDate = dateUTC.toLocaleDateString('en-US', options);
+
+
+        const reservationDate = document.createElement('P');
+        reservationDate.innerHTML = `<span>Date: </span>${formattedDate}`;
+
+        const reservationTime = document.createElement('P');
+        reservationTime.innerHTML = `<span>Time: </span>${time}`;
+
+        const activityHeading = document.createElement('H3');
+        activityHeading.textContent = 'Activities Summary';
+        summary.appendChild(activityHeading);
+
+        total = 0;
+
+        activities.forEach(activity => {
+            const {id, name, price} = activity;
+                const container = document.createElement('DIV');
+                container.classList.add('activity-container');
+                
+                const activityText = document.createElement('P');
+                activityText.textContent = name;
+
+                const activityPrice = document.createElement('P');
+                activityPrice.innerHTML = `<span>Price: </span>$${price}`;
+                total += parseFloat(price);
+
+                container.appendChild(activityText);
+                container.appendChild(activityPrice);
+
+                summary.appendChild(container);
+        })
+
+        const totalContainer = document.createElement('P');
+        totalContainer.classList.add('total');
+        totalContainer.innerHTML = `<span>Total Price: </span>$${total.toFixed(2)}`;
+        summary.appendChild(totalContainer);
+
+        const infoHeading = document.createElement('H3');
+        infoHeading.textContent = 'Reservation Summary';
+        summary.appendChild(infoHeading);
+
+        // Send Button
+        const sendButton = document.createElement('BUTTON');
+        sendButton.classList.add('button');
+        sendButton.textContent = 'Make Reservation';
+        sendButton.onclick = makeReservation;
+
+        summary.appendChild(clientName);
+        summary.appendChild(reservationDate);
+        summary.appendChild(reservationTime);
+        summary.appendChild(sendButton);
+    }
+}
+
+function makeReservation(){
+    console.log('Making reservation...');
 }
