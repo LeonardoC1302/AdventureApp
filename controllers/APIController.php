@@ -2,6 +2,7 @@
 
 namespace Controllers;
 use Model\Activity;
+use Model\Reservation;
 
 class APIController{
     public static function index(){
@@ -10,10 +11,8 @@ class APIController{
     }
 
     public static function save(){
-        $answer = [
-            'data' => $_POST
-        ];
-
-        echo json_encode($answer);
+        $reservation = new Reservation($_POST);
+        $result = $reservation->save();
+        echo json_encode($result);
     }
 }

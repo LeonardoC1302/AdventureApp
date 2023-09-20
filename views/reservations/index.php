@@ -41,6 +41,8 @@
                 <label for="time">Time</label>
                 <input type="time" id="time">
             </div>
+
+            <input type="hidden" id="id" value="<?php echo $id; ?>">
         </form>
     </div>
 
@@ -53,13 +55,15 @@
 
     <!-- Pagination -->
     <div class="pagination">
-        <button id="prev" class="button">&laquo; Anterior</button>
-        <button id="next" class="button">Siguiente &raquo;</button>
+        <button id="prev" class="button">&laquo; Previous</button>
+        <button id="next" class="button">Next &raquo;</button>
     </div>
 
 
 </div>
 
 <?php 
-    $script = "<script src='build/js/app.js'></script>";
+    $script = "
+        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+        <script src='build/js/app.js'></script>";
 ?>

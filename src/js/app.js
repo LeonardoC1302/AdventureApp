@@ -3,6 +3,7 @@ const start = 1;
 const end = 3;
 
 const reservation = {
+    id: "",
     name: "",
     date: "",
     time: "",
@@ -23,6 +24,7 @@ function startApp() {
 
     checkAPI();
 
+    clientId();
     clientName();
     addDate();
     addTime();
@@ -164,6 +166,10 @@ function selectActivity(activity){
     // console.log(reservation);
 }
 
+function clientId(){
+    reservation.id = document.querySelector('#id').value;
+}
+
 function clientName(){
     reservation.name = document.querySelector('#name').value;
 }
@@ -300,20 +306,49 @@ function showSummary(){
 }
 
 async function makeReservation(){
-    const {name, date, time, activities} = reservation;
+    const {name, date, time, activities, id} = reservation;
     const idActivities = activities.map(activity => activity.id);
 
     const data = new FormData();
-    data.append('name', name);
+    data.append('userId', id);
     data.append('date', date);
     data.append('time', time);
     data.append('activities', idActivities);
 
-    const url = 'http://localhost:3000/api/reservations';
-    const answer = await fetch(url, {
-        'method': 'POST',
-        'body': data
-    });
+    try {
+        const url = 'http://localhost:3000/api/reservations';
+        const answer = await fetch(url, {
+            'method': 'POST',
+            'body': data
+        });
+    
+        const result = await answer.json(); 
+        
+        if(result.result){
+            Swal.fire({
+                icon: 'success',
+                title: 'Reservation Created',
+                text: 'Your reservation has been created successfully',
+                button: 'OK',
+                background: '#e3e3c9',
+                color: '#221906',
+                confirmButtonColor: '#8d6b2b'
+              }).then(() => {
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
 
-    const result = await answer.json(); 
+              })
+        }
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Something went wrong, try again',
+            background: '#e2e1b5',
+            color: '#221906',
+            confirmButtonColor: '#8d6b2b'
+          })
+    }
+
 }
