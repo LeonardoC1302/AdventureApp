@@ -47,7 +47,9 @@ class LoginController{
     }
 
     public static function logout(Router $router){
-        echo "Logout";
+        session_start();
+        $_SESSION = [];
+        header('Location: /');
     }
 
     public static function forgot(Router $router){
@@ -168,19 +170,6 @@ class LoginController{
     }
 
     public static function message(Router $router){
-        $router->render('auth/message', [
-            
-        ]);
-    }
-
-
-    // Reservations
-    public static function reservations(Router $router){
-        echo "Reservations";
-    }
-
-    // Admin
-    public static function admin(Router $router){
-        echo "Admin";
+        $router->render('auth/message');
     }
 }

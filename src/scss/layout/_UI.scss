@@ -23,4 +23,20 @@
         margin: 0 auto;
         padding: 3rem 0;
     }
+
+    .bar {
+        margin-bottom: v.$gap 0;
+        text-align: center;
+        
+        @include m.tablet {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .button{
+            @include m.button(v.$main, v.$white);
+            margin: 0;
+        }
+    }
 }

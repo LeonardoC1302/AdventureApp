@@ -2,7 +2,7 @@
 <p class="page-description"> Choose your activities and fill up your information </p>
 
 <?php 
-    include_once __DIR__ . "/../templates/alerts.php";
+    include_once __DIR__ . '/../templates/bar.php';
 ?>
 
 

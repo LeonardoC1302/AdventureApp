@@ -6,6 +6,7 @@ use MVC\Router;
 use Controllers\LoginController;
 use Controllers\ReservationController;
 use Controllers\APIController;
+use Controllers\AdminController;
 
 $router = new Router();
 
@@ -35,7 +36,7 @@ $router->get('/message', [LoginController::class, 'message']);
 $router->get('/reservations', [ReservationController::class, 'index']);
 
 // Admin
-$router->get('/admin', [LoginController::class, 'admin']);
+$router->get('/admin', [AdminController::class, 'index']);
 
 // API
 $router->get('/api/activities', [APIController::class, 'index']);
