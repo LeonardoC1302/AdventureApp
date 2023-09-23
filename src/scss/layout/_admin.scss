@@ -1,0 +1,22 @@
+@use 'base/variables' as v;
+
+
+.reservations {
+    list-style: none;
+    padding: 0;
+    text-decoration: none;
+    li{
+        padding: 1rem;
+        border-top: 1px solid v.$white;
+        p{
+            font-weight: v.$bold;
+            color: lighten(v.$secondary, 10%);
+        }
+
+        span, .activity {
+            font-weight: v.$regular;
+            color: v.$white;
+        }
+
+    }
+}

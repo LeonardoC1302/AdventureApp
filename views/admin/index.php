@@ -13,4 +13,35 @@
         </div>
     </form>
 </div>
-<div class="admin-reservations"></div>
+<div class="admin-reservations">
+    <ul class="reservations">
+        <?php
+            $idReservation = 0;
+            foreach($reservations as $key => $reservation) {
+                if($idReservation != $reservation->id) {
+                    $total = 0;
+                    $idReservation = $reservation->id;
+        ?>
+
+        <li>
+            <p>ID: <span><?php echo $reservation->id; ?></span></p>
+            <p>Time: <span><?php echo $reservation->time; ?></span></p>
+            <p>Client: <span><?php echo $reservation->client; ?></span></p>
+            <p>Email: <span><?php echo $reservation->email; ?></span></p>
+            <p>Phone: <span><?php echo $reservation->phone; ?></span></p>
+
+            <h3>Activities</h3>
+
+            <?php } ?> <!-- End if -->
+            <p class="activity"><?php echo $reservation->activity . " " . $reservation->price; ?></p>
+
+            <?php 
+                $total += $reservation->price;
+                $current = $reservation->id;
+                $next = $reservations[$key + 1]->id ?? 0;
+                if(isLast($current, $next)) { ?>
+                    <p class="total">Total: <span>$<?php echo $total; ?></span></p>
+                <?php }
+            } ?>
+    </ul>
+</div>

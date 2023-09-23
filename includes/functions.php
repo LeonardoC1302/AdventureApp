@@ -13,6 +13,10 @@ function s($html) : string {
     return $s;
 }
 
+function isLast(string $current, string $next) : bool {
+    return $current != $next;
+}
+
 // Protect Reservations Pages
 function isAuth() : void{
     if(!isset($_SESSION['login'])){

@@ -116,6 +116,11 @@ class ActiveRecord {
         return array_shift($result); // Get the first element of the array
     }
 
+    public static function SQL($query){
+        $result = self::querySQL($query);
+        return $result; // Get the first element of the array
+    }
+
     public static function querySQL($query){
         $result = self::$db->query($query);
         $array = [];
