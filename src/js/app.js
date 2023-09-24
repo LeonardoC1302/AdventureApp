@@ -330,9 +330,9 @@ async function makeReservation(){
                 title: 'Reservation Created',
                 text: 'Your reservation has been created successfully',
                 button: 'OK',
-                background: '#e3e3c9',
-                color: '#221906',
-                confirmButtonColor: '#8d6b2b'
+                background: '#FBFBEC',
+                color: '#0a0500',
+                confirmButtonColor: '#8fa226'
               }).then(() => {
                 setTimeout(() => {
                     window.location.reload();

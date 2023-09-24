@@ -16,7 +16,7 @@
 
 <?php 
     if(count($reservations) === 0){
-        echo "<h2>No reservations for this date</h2>";
+        echo "<h2 class='empty'>No reservations for this date</h2>";
     }
 ?>
 
@@ -48,6 +48,10 @@
                 $next = $reservations[$key + 1]->id ?? 0;
                 if(isLast($current, $next)) { ?>
                     <p class="total">Total: <span>$<?php echo $total; ?></span></p>
+                    <form action="/api/delete" method='POST'>
+                        <input type="hidden" name="id" value="<?php echo $reservation->id; ?>">
+                        <input type="submit" class="delete-button" value="Delete">
+                    </form>
                 <?php }
             } ?>
     </ul>

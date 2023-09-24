@@ -118,7 +118,7 @@ class ActiveRecord {
 
     public static function SQL($query){
         $result = self::querySQL($query);
-        return $result; // Get the first element of the array
+        return $result;
     }
 
     public static function querySQL($query){

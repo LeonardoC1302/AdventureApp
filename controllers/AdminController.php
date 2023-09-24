@@ -9,6 +9,9 @@ use MVC\Router;
 class AdminController{
     public static function index(Router $router){
         session_start();
+
+        isAdmin();
+
         $date = $_GET['date'] ?? date('Y-m-d');
         $dates = explode('-', $date);
         if(!checkdate($dates[1], $dates[2], $dates[0])) {

@@ -4,3 +4,7 @@
 .button {
     @include m.button(v.$accent, v.$text);
 }
+
+.delete-button {
+    @include m.button(v.$accent, v.$text);
+}

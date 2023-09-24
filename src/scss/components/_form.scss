@@ -19,9 +19,9 @@
         border: none;
         padding: calc(v.$gap / 4);
         border-radius: 1rem;
-        background-color: v.$primary;
+        background-color: darken(v.$white, 18%);
         &:disabled {
-            background-color: v.$secondary;
+            background-color: v.$primary;
             color: v.$text;
             cursor: not-allowed;
         }

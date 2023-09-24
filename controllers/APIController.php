@@ -31,4 +31,13 @@ class APIController{
         // Return result
         echo json_encode(['result' => $result]);
     }
+
+    public static function delete() {
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $id = $_POST['id'];
+            $reservation = Reservation::where('id', $id);
+            $reservation->delete();
+            header('Location: ' . $_SERVER['HTTP_REFERER']); // Redirect to the previous page
+        }
+    }
 }
