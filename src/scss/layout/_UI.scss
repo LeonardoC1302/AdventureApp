@@ -22,6 +22,9 @@
         width: 95%;
         margin: 0 auto;
         padding: 3rem 0;
+        @include m.tablet {
+            overflow-y: scroll;
+        }
     }
 
     .bar {
@@ -39,4 +42,10 @@
             margin: 0;
         }
     }
+
+    /* Hide scrollbar for webkit-based browsers */
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
 }

@@ -9,11 +9,18 @@
     <form class="form">
         <div class="field">
             <label for="date">Date</label>
-            <input type="date" id="date" name="date">
+            <input type="date" id="date" name="date" value="<?php echo $date; ?>">
         </div>
     </form>
 </div>
-<div class="admin-reservations">
+
+<?php 
+    if(count($reservations) === 0){
+        echo "<h2>No reservations for this date</h2>";
+    }
+?>
+
+<div id="admin-reservations">
     <ul class="reservations">
         <?php
             $idReservation = 0;
@@ -45,3 +52,8 @@
             } ?>
     </ul>
 </div>
+
+
+<?php 
+    $script = "<script src='build/js/search.js'></script>";
+?>
