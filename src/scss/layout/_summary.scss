@@ -6,7 +6,7 @@
     }
 
     span{
-        color: v.$light;
+        color: v.$secondary;
         font-weight: v.$bold;
         font-size: 2.4rem;
     }
@@ -19,7 +19,7 @@
 
 .activity-container{
     padding: 3rem 0;
-    border-bottom: 1px solid darken(v.$light, 10%);
+    border-bottom: 3px solid v.$accent;
 
     &:last-of-type{
         margin-bottom: v.$gap;

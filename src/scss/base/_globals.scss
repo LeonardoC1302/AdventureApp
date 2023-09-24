@@ -13,8 +13,8 @@ body {
     }
     display: flex;
     flex-direction: column;
-    background-color: v.$main;
-    color: v.$white;
+    background-color: v.$background;
+    color: v.$text;
     font-family: v.$main-font;
     font-size: 1.6rem;
 }

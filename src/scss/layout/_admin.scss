@@ -7,15 +7,15 @@
     text-decoration: none;
     li{
         padding: 1rem;
-        border-top: 1px solid v.$white;
+        border-top: 3px solid v.$accent;
         p{
             font-weight: v.$bold;
-            color: lighten(v.$secondary, 10%);
+            color: v.$secondary;
         }
 
         span, .activity {
             font-weight: v.$regular;
-            color: v.$white;
+            color: v.$text;
         }
 
     }

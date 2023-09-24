@@ -4,7 +4,7 @@ h1, h2, h3 {
     font-family: v.$main-font;
     margin: 0 0 calc(v.$gap / 2) 0 ;
     font-weight: 900;
-    color: v.$white;
+    color: v.$text;
     text-align: center;
 }
 
@@ -19,7 +19,7 @@ h3 {
     text-align: center;
 }
 p {
-    color: v.$white;
+    color: v.$text;
     font-size: 2rem;
 }
 

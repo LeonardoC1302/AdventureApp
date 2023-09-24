@@ -9,7 +9,7 @@
     button {
         background-color: v.$secondary;
         border: none;
-        color: v.$white;
+        color: v.$text;
         padding: 1rem;
         display: block;
         width: 100%;
@@ -20,12 +20,12 @@
 
         &:hover {
             cursor: pointer;
-            background-color: darken(v.$secondary, 10%);
+            background-color: v.$secondary;
         }
 
         &.active {
-            background-color: v.$white;
-            color: v.$secondary;
+            background-color: v.$accent;
+            color: v.$text;
         }
     }
 }

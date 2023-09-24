@@ -11,7 +11,7 @@
     
     .activity {
         align-items: center;
-        background-color: v.$light;
+        background-color: v.$primary;
         padding: 2rem;
         border-radius: 1rem;
         transition: transform 300ms;
@@ -23,7 +23,7 @@
 
         p {
             margin: 0 0 calc(v.$gap/4) 0;
-            color: v.$dark;
+            color: v.$text;
         }
 
         .activity-price {
@@ -34,26 +34,26 @@
         }
 
         .activity-name {
-            color: v.$dark;
+            color: v.$text;
             font-weight: v.$bold;
             font-size: 2rem;
             margin: 0;
         }
 
         .activity-description {
-            color: v.$dark;
+            color: v.$text;
             font-weight: v.$regular;
             font-size: 1.5rem;
             margin-top: 0.5rem;
         }
 
         &.selected {
-            background-color: v.$secondary;
+            background-color: v.$accent;
             p {
-                color: v.$white;
+                color: v.$text;
             }
             .activity-price {
-                color: v.$light;
+                color: v.$secondary;
             }
         }
     }

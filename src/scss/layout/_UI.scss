@@ -10,7 +10,7 @@
 
     .image {
         height: 20rem;
-        background-image: url('../img/main.jpg');
+        background-image: url('../img/main.png');
         background-size: cover;
         background-position: center center;
         @include m.tablet {
@@ -38,8 +38,12 @@
         }
 
         .button{
-            @include m.button(v.$main, v.$white);
+            @include m.button(v.$background, v.$text);
             margin: 0;
+        }
+        span{
+            font-weight: v.$bold;   
+            color: v.$secondary;
         }
     }
 
