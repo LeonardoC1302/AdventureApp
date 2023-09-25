@@ -17,4 +17,20 @@ class Activity extends ActiveRecord {
         $this->description = $args['description'] ?? '';
         $this->price = $args['price'] ?? '';
     }
+
+    public function validate(){
+        if(!$this->name){
+            self::$alerts['error'][] = "Name is required";
+        }
+        if(!$this->description){
+            self::$alerts['error'][] = "Description is required";
+        }
+        if(!$this->price){
+            self::$alerts['error'][] = "Price is required";
+        } else if(!is_numeric($this->price)){
+            self::$alerts['error'][] = "Price must be a number";
+        }
+
+        return self::$alerts;
+    }
 }

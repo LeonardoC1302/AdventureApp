@@ -6,5 +6,9 @@
 }
 
 .delete-button {
-    @include m.button(v.$accent, v.$text);
+    @include m.button(v.$secondary, v.$text);
+}
+
+.update-button {
+    @include m.button(v.$primary, v.$text);
 }

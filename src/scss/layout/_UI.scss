@@ -51,5 +51,18 @@
     ::-webkit-scrollbar {
         display: none;
     }
+}
 
+.activities-bar{
+    margin-bottom: v.$gap;
+
+    @include m.tablet {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .button {
+        margin: 0 0 1rem 0;
+    }
 }

@@ -7,6 +7,7 @@ use Controllers\LoginController;
 use Controllers\ReservationController;
 use Controllers\APIController;
 use Controllers\AdminController;
+use Controllers\ActivityController;
 
 $router = new Router();
 
@@ -43,7 +44,16 @@ $router->get('/api/activities', [APIController::class, 'index']);
 $router->post('/api/reservations', [APIController::class, 'save']);
 $router->post('/api/delete', [APIController::class, 'delete']);
 
+// Activities CRUD
+$router->get('/activities', [ActivityController::class, 'index']);
 
+$router->get('/activities/create', [ActivityController::class, 'create']);
+$router->post('/activities/create', [ActivityController::class, 'create']);
+
+$router->get('/activities/update', [ActivityController::class, 'update']);
+$router->post('/activities/update', [ActivityController::class, 'update']);
+
+$router->post('/activities/delete', [ActivityController::class, 'delete']);
 
 
 // Checks and validates the routes, ensuring they exist and assigns them to the Controller functions

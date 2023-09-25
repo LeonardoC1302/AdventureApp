@@ -9,7 +9,7 @@
     <form class="form">
         <div class="field">
             <label for="date">Date</label>
-            <input type="date" id="date" name="date" value="<?php echo $date; ?>">
+            <input type="date" id="date" name="date" value="<?php echo $date; ?>" class="filter">
         </div>
     </form>
 </div>

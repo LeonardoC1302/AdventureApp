@@ -24,3 +24,14 @@
 .empty {
     color: v.$secondary;
 }
+
+.activities {
+    @extend .reservations;
+    .actions {
+        margin: 0;
+    }
+    .update-button,
+    .delete-button {
+        margin: 0;
+    }
+}

@@ -26,4 +26,18 @@
             cursor: not-allowed;
         }
     }
+
+    textarea {
+        padding: 1rem;
+        border: none;
+        display: block;
+        width: 100%;
+        background-color: darken(v.$white, 18%);
+        border-radius: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .filter {
+        background-color: v.$primary;
+    }
 }
