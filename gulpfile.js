@@ -63,3 +63,4 @@ function watchFiles() {
 exports.css = css;
 exports.watchFiles = watchFiles;
 exports.default = parallel(css, javascript,  images, webpVersion,  watchFiles); 
+exports.build = parallel(css, javascript,  images, webpVersion); 

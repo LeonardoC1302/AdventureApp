@@ -108,7 +108,7 @@ function prev(){
 
 async function checkAPI(){
     try {
-        const url = 'http://localhost:3000/api/activities';
+        const url = `${location.origin}/api/activities`;
         // Await stops the execution of the code until the promise is resolved
         const response = await fetch(url);
         const result = await response.json();
@@ -316,7 +316,7 @@ async function makeReservation(){
     data.append('activities', idActivities);
 
     try {
-        const url = 'http://localhost:3000/api/reservations';
+        const url = `${location.origin}/api/reservations`;
         const answer = await fetch(url, {
             'method': 'POST',
             'body': data

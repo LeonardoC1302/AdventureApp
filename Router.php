@@ -19,16 +19,7 @@ class Router
 
     public function checkRoutes()
     {
-        
-        // Protect Routes...
-        session_start();
-
-        // Array of protected routes...
-        // $protected_routes = ['/admin', '/properties/create', '/properties/update', '/properties/delete', '/sellers/create', '/sellers/update', '/sellers/delete'];
-
-        // $auth = $_SESSION['login'] ?? null;
-
-        $currentUrl = $_SERVER['PATH_INFO'] ?? '/';
+        $currentUrl = strtok($_SERVER['REQUEST_URI'], '?') ?? '/';
         $method = $_SERVER['REQUEST_METHOD'];
 
         if ($method === 'GET') {
